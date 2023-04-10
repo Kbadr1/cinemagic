@@ -58,7 +58,7 @@ const Header = ({ data }) => {
               </p>
               {genres.map((genre, index) => (
                 <p key={genre.id} className=" mr-1  font-light text-sm">
-                  <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
+                  {genre.name}
 
                   {index !== genres.length - 1 ? "," : ""}
                 </p>
