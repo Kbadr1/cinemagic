@@ -18,6 +18,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cinemagic" element={<Home />} />
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/category/:name" element={<Category />} />
         <Route path="/movie/:id/cast" element={<Cast />} />
