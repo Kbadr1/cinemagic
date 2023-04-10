@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { Footer, Navbar } from "./components";
+import {
+  Home,
+  Category,
+  Movie,
+  Cast,
+  Discover,
+  Reviews,
+  Keyword,
+} from "./pages";
+import Search from "./pages/Search";
+import SearchContextProvider from "./context/SearchContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SearchContextProvider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movie/:id" element={<Movie />} />
+        <Route path="/category/:name" element={<Category />} />
+        <Route path="/movie/:id/cast" element={<Cast />} />
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/movie/:id/reviews" element={<Reviews />} />
+        <Route path="keyword/:id" element={<Keyword />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+      <Footer />
+    </SearchContextProvider>
   );
 }
 
