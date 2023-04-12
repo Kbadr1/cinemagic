@@ -2,7 +2,7 @@ import React from "react";
 import hero from "../../assets/hero.jpg";
 import HeroSearchbar from "./HeroSearchbar";
 
-const Hero = () => {
+const Hero = ({ query, setQuery }) => {
   return (
     <div
       style={{
@@ -19,7 +19,7 @@ const Hero = () => {
           Millions of <span className="text-gradient">movies</span> to discover.
           Explore now.
         </h2>
-        <HeroSearchbar />
+        <HeroSearchbar query={query} setQuery={setQuery} />
       </div>
     </div>
   );

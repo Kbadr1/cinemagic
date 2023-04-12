@@ -2,14 +2,14 @@ import React from "react";
 import { Hero, MoviesSection, FooterSection } from "../components/Home";
 import { useCategory } from "../services";
 
-const Home = () => {
+const Home = ({ query, setQuery }) => {
   const { data: popularData } = useCategory(1, "popular");
   const { data: topratedData } = useCategory(1, "top_rated");
   const { data: upcomingData } = useCategory(1, "upcoming");
 
   return (
     <div>
-      <Hero />
+      <Hero query={query} setQuery={setQuery} />
       <MoviesSection
         data={popularData}
         headerTitle={`What's Popular`}

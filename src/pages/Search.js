@@ -1,7 +1,6 @@
 import React from "react";
 import { useSearchMovies } from "../services";
-import { useContext, useState } from "react";
-import { SearchContext } from "../context/SearchContext";
+import { useState } from "react";
 import {
   LoadingSpinner,
   Error,
@@ -10,9 +9,7 @@ import {
   Pagination,
 } from "../components";
 
-const Search = () => {
-  const { query, setQuery, search, setSearch } = useContext(SearchContext);
-
+const Search = ({ query, setQuery, search, setSearch }) => {
   const [pageNumber, setPageNumber] = useState(1);
 
   const { data, isLoading, isError } = useSearchMovies(query, pageNumber);
@@ -57,7 +54,7 @@ const Search = () => {
         </form>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {data.data.results.map((movie) => {
+          {data?.data.results.map((movie) => {
             return <Movie key={movie.id} movie={movie} />;
           })}
         </div>

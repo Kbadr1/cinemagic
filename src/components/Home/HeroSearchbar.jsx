@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { SearchContext } from "../../context/SearchContext";
+import { useSearchMovies } from "../../services";
 
-const HeroSearchbar = () => {
-  const { query, setQuery } = useContext(SearchContext);
+const HeroSearchbar = ({ query, setQuery }) => {
   const navigate = useNavigate();
+
+  useSearchMovies(query);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (query.trim() !== "") {
-      navigate("/search");
+      navigate(`/search`);
     } else {
     }
   };
+
   return (
     <>
       <form
